@@ -361,10 +361,17 @@ class Game {
         console.log("GLTFLoader ");
         game.obj_WarpRide = obj;
 
-        const objscn = game.obj_WarpRide.scene;
+        const objWarpRide = game.obj_WarpRide.scene;
+        objWarpRide.traverse((object) => {
+          if (!object["isMesh"]) return;
+          const material = object["material"];
+          if (material.isMaterial) {
+            material.color.setHex(0xff0000);
+          }
+        });
 
         for (let i = 0; i < 9; i++) {
-          const cylinder = objscn.clone();
+          const cylinder = objWarpRide.clone();
           game.scene.add(cylinder);
           game.cylinders.push(cylinder);
 
