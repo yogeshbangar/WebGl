@@ -1,72 +1,70 @@
-
 var stars, particles;
 function Particle(scene) {
-    starGeo = new THREE.Geometry();
-    for (let i = 0; i < 500; i++) {
-        let star = new THREE.Vector3(
-            Math.random() * 20 - 10,
-            Math.random() * 20 - 10,
-            Math.random() * (- 300)
-        );
-        star.velocity = 0;
-        star.acceleration = 0.02;
-        starGeo.vertices.push(star);
-    }
-    let starMaterial = new THREE.PointsMaterial({
-        color: 0xff0000,
-        size: 0.1,
-    });
-    stars = new THREE.Points(starGeo, starMaterial);
+  starGeo = new THREE.Geometry();
+  for (let i = 0; i < 500; i++) {
+    let star = new THREE.Vector3(
+      Math.random() * 20 - 10,
+      Math.random() * 20 - 10,
+      Math.random() * -300
+    );
+    star.velocity = 0;
+    star.acceleration = 0.02;
+    starGeo.vertices.push(star);
+  }
+  let starMaterial = new THREE.PointsMaterial({
+    color: 0xff0000,
+    size: 0.1,
+  });
+  stars = new THREE.Points(starGeo, starMaterial);
 
-    scene.add(stars);
-    setupScene(scene);
+  scene.add(stars);
+  setupScene(scene);
 }
 function aniparticle() {
-    starGeo.vertices.forEach(p => {
-        p.velocity += p.acceleration
-        p.z += p.velocity;
+  starGeo.vertices.forEach((p) => {
+    p.velocity += p.acceleration;
+    p.z += p.velocity;
 
-        if (p.z > 0) {
-            p.z = -200;
-            p.velocity = 0;
-        }
-    });
+    if (p.z > 0) {
+      p.z = -200;
+      p.velocity = 0;
+    }
+  });
 
-    starGeo.verticesNeedUpdate = true;
-    particles.children.forEach(p => {
+  starGeo.verticesNeedUpdate = true;
+  particles.children.forEach((p) => {
+    p.velocity += p.acceleration;
+    p.position.z += p.velocity;
 
-        p.velocity += p.acceleration;
-        p.position.z += p.velocity;
-
-        if (p.position.z > 50) {
-            p.position.z = -200;
-            p.velocity = 0;
-        }
-    })
+    if (p.position.z > 50) {
+      p.position.z = -200;
+      p.velocity = 0;
+    }
+  });
 }
 
 var MAX = 500;
 function setupScene(scene) {
-    particles = new THREE.Group()
-    const geo = new THREE.BoxBufferGeometry(.01, .01, 20)
-    const mat = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-    for (let i = 0; i < MAX; i++) {
-        const particle = new THREE.Mesh(geo, mat)
-        particle.position.x = Math.random() * 20 - 10;
-        particle.position.z = -(Math.random() * 550);
-        particle.position.y = Math.random() * 20 - 10;
-        particle.velocity = 0;
-        particle.acceleration = 0.02;
-        particles.add(particle);
-    }
-    particles.position.z = -40;
-    scene.add(particles);
-    particles.visible = false;
-    stars.visible = false;
+  particles = new THREE.Group();
+  const geo = new THREE.BoxBufferGeometry(0.01, 0.01, 20);
+  const mat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  for (let i = 0; i < MAX; i++) {
+    const particle = new THREE.Mesh(geo, mat);
+    particle.position.x = Math.random() * 20 - 10;
+    particle.position.z = -(Math.random() * 550);
+    particle.position.y = Math.random() * 20 - 10;
+    particle.velocity = 0;
+    particle.acceleration = 0.02;
+    particles.add(particle);
+  }
+  particles.position.z = -40;
+  scene.add(particles);
+  particles.visible = false;
+  stars.visible = false;
 }
 
 function vertexShader() {
-    return `
+  return `
     varying vec2 vUv;
     void main() {
       vUv = (position.xy/2.0)+0.5;
@@ -76,7 +74,7 @@ function vertexShader() {
   `;
 }
 function fragmentShader() {
-    return `
+  return `
       varying vec2 vUv;
       uniform sampler2D tex1;
       uniform sampler2D tex2;
@@ -97,18 +95,18 @@ function fragmentShader() {
 }
 
 function simpleFragmentShader() {
-    return `
+  return `
       varying vec2 vUv;
       uniform sampler2D tex;
       void main() {
         vec2 uv= vUv;
         gl_FragColor = texture2D(tex,vUv);
       }
-  `
+  `;
 }
 
 function BlurHvs() {
-    return `
+  return `
         uniform float width;
         varying  vec2 blurTexCoords[11];
         void main() {
@@ -125,7 +123,7 @@ function BlurHvs() {
 }
 
 function BlurVvs() {
-    return `
+  return `
         uniform float height;
         varying  vec2 blurTexCoords[11];
         void main() {
@@ -142,7 +140,7 @@ function BlurVvs() {
 }
 
 function Blurfs() {
-    return `
+  return `
         varying vec2 blurTexCoords[11];
         uniform sampler2D tex;
         uniform float factor;
