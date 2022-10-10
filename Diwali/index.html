@@ -1,0 +1,32 @@
+<html id="main"><head><title>Diwali</title>
+  <style>
+#main{user-zoom: none; touch-action: none; pointer-events: none;}
+body{margin: 0px;padding: 0px;position: fixed;overflow: hidden;user-zoom: none; touch-action: none; pointer-events: none;}
+
+</style>
+</head>
+<body>
+    <script src="./basic/confetti.browser.min.js"></script>
+    <script src="./basic/three.min.js"></script>
+    <script src="./basic/three.min.js"></script>
+    <script src="./basic/three-ui.min.js"></script>
+    <script src="./basic/AssetLoader.js"></script>
+    <script src="./basic/tween.umd.js"></script>
+    <script src="./js/Basic.js"></script>
+    <script src="./js/Game.js"></script>
+
+    <script type="text/javascript">
+    var mGame;
+        window.onload = function() {
+            console.log("constructor Start");
+            if(mGame === undefined)
+                mGame = new Game();
+        };
+        function callAds(){
+          console.log("callAds");
+          FbPlayableAd.onCTAClick();
+
+        }
+    </script>
+</body>
+</html>
