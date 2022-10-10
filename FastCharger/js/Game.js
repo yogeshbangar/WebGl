@@ -342,7 +342,7 @@ class Game {
     var MovingCubeGeom = new THREE.CubeGeometry(0.1, 0.1, 0.1);
     this.MovingCube = new THREE.Mesh(MovingCubeGeom, material);
     this.MovingCube.position.set(0, 0, -5);
-    this.scene.add(this.MovingCube);
+    // this.scene.add(this.MovingCube);
 
     var geometry = new THREE.PlaneBufferGeometry(16, 16);
     var material = new THREE.MeshLambertMaterial({
