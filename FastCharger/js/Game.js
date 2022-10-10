@@ -116,7 +116,7 @@ class Game {
       vertexShader: vertexShader(),
     });
 
-    var materialShad = new THREE.MeshLambertMaterial({
+    const materialShad = new THREE.MeshLambertMaterial({
       side: THREE.DoubleSide,
       color: 0xff0ff0,
     });
@@ -248,12 +248,12 @@ class Game {
     this.boosAnim = 0;
     this.spd = 0;
     this.time = 0;
-    var manager = new THREE.LoadingManager(loadModel);
+    const manager = new THREE.LoadingManager(loadModel);
     manager.onProgress = function (item, loaded, total) {};
     function onProgress(xhr) {}
     function onError() {}
 
-    var textureLoader = new THREE.TextureLoader();
+    const textureLoader = new THREE.TextureLoader();
     this.uniforms = {
       time: { value: 1.0 },
       texture: {
@@ -264,9 +264,9 @@ class Game {
       "texture"
     ].value.wrapT = THREE.RepeatWrapping;
 
-    var size = 0.65;
+    const size = 0.65;
 
-    var materialShad = new THREE.ShaderMaterial({
+    const materialShad = new THREE.ShaderMaterial({
       side: THREE.DoubleSide,
       uniforms: this.uniforms,
       vertexShader: document.getElementById("vertexShader").textContent,
@@ -274,7 +274,7 @@ class Game {
     });
 
     this.cylinders = [];
-    var geometry = new THREE.CylinderGeometry(
+    const geometryCylinder = new THREE.CylinderGeometry(
       8,
       8,
       40,
@@ -284,38 +284,38 @@ class Game {
       Math.PI * 0.4,
       Math.PI * 2
     );
-    var material = new THREE.MeshLambertMaterial({
+    const materialCylinder = new THREE.MeshLambertMaterial({
       map: new THREE.TextureLoader().load("assets/lava/lavatile.jpg"),
       side: THREE.DoubleSide,
       color: 0xff0000,
     });
     for (let i = 0; i < 0; i++) {
-      var cylinder = new THREE.Mesh(geometry, material);
+      const cylinder = new THREE.Mesh(geometryCylinder, materialCylinder);
       game.scene.add(cylinder);
       this.cylinders.push(cylinder);
       this.cylinders[i].position.set(0, 0, 1000);
     }
 
-    var material = new THREE.MeshLambertMaterial({
+    const materiaBooster = new THREE.MeshLambertMaterial({
       side: THREE.DoubleSide,
       color: 0xffffff,
     });
-    var MovingCubeGeom = new THREE.CubeGeometry(0.15, 0.15, 0.15); //, 1, 1, 1, materialArray);
+    const boosterGeom = new THREE.CubeGeometry(0.15, 0.15, 0.15); //, 1, 1, 1, materialArray);
     this.boosters = [];
     for (let i = 0; i < 0; i++) {
-      var booster = new THREE.Mesh(MovingCubeGeom, material);
+      const booster = new THREE.Mesh(boosterGeom, materiaBooster);
       game.scene.add(booster);
       booster.position.set(0, 0, -i * 10);
       this.boosters.push(booster);
     }
 
-    var loader = new THREE.OBJLoader(manager);
-    loader.load(
+    const objLoader = new THREE.OBJLoader(manager);
+    objLoader.load(
       "assets/power.obj",
       function (obj) {
         obj.traverse(function (child) {
           if (child.isMesh) {
-            var material = new THREE.MeshStandardMaterial({
+            const material = new THREE.MeshStandardMaterial({
               color: 0xffff00,
               metalness: 0,
               roughness: 1,
@@ -325,7 +325,7 @@ class Game {
           }
         });
         for (let i = 0; i < 10; i++) {
-          var booster = obj.clone();
+          const booster = obj.clone();
           booster.scale.set(0.03, 0.03, 0.03);
           game.scene.add(booster);
           game.boosters.push(booster);
@@ -335,17 +335,17 @@ class Game {
       onError
     );
 
-    var material = new THREE.MeshLambertMaterial({
+    const movingCubeMaterial = new THREE.MeshLambertMaterial({
       side: THREE.DoubleSide,
       color: 0xff00ff,
     });
-    var MovingCubeGeom = new THREE.CubeGeometry(0.1, 0.1, 0.1);
-    this.MovingCube = new THREE.Mesh(MovingCubeGeom, material);
+    const MovingCubeGeom = new THREE.CubeGeometry(0.1, 0.1, 0.1);
+    this.MovingCube = new THREE.Mesh(MovingCubeGeom, movingCubeMaterial);
     this.MovingCube.position.set(0, 0, -5);
     // this.scene.add(this.MovingCube);
 
-    var geometry = new THREE.PlaneBufferGeometry(16, 16);
-    var material = new THREE.MeshLambertMaterial({
+    const geometry = new THREE.PlaneBufferGeometry(16, 16);
+    const material = new THREE.MeshLambertMaterial({
       side: THREE.DoubleSide,
       color: 0xf2f0fa,
     });
@@ -354,17 +354,17 @@ class Game {
 
     Particle(this.scene);
     this.mixer = [];
-    var loader = new THREE.GLTFLoader(manager);
+    const loader = new THREE.GLTFLoader(manager);
     loader.load(
       "assets/WarpRide.gltf",
       function (obj) {
         console.log("GLTFLoader ");
         game.obj_WarpRide = obj;
 
-        var objscn = game.obj_WarpRide.scene;
+        const objscn = game.obj_WarpRide.scene;
 
         for (let i = 0; i < 9; i++) {
-          var cylinder = objscn.clone();
+          const cylinder = objscn.clone();
           game.scene.add(cylinder);
           game.cylinders.push(cylinder);
 
@@ -374,21 +374,16 @@ class Game {
             cylinder.children[2].children[1].visible = true;
             cylinder.children[2].children[5].visible = true;
           }
-          var animations = obj.animations;
+          const animations = obj.animations;
           if (animations && animations.length) {
             game.mixer.push(new THREE.AnimationMixer(cylinder));
-            for (var k = 0; k < animations.length; k++) {
-              var animation = animations[k];
-              // console.log(animation);
-              var action = game.mixer[i].clipAction(animation);
+            for (let k = 0; k < animations.length; k++) {
+              const animation = animations[k];
+              const action = game.mixer[i].clipAction(animation);
               game.mixer[i].used = 0;
-              // console.log(animation.duration);
               action.play();
             }
           }
-
-          // game.cylinders[i].position.set(0, i * 220, -1000);
-          // game.cylinders[i].rotation.set(Math.PI * .5, 0, Math.PI * .5);
         }
       },
       onProgress,
@@ -403,9 +398,9 @@ class Game {
     AssetLoader.add.image("assets/reload.png");
     AssetLoader.load(function () {
       game.mTex_logo = loadUIRect(game.gameUI, 0, 0, 1920, 1920, 0);
-      var httlogo = loadUI(game.gameUI, "assets/logo.png", 0, 0);
-      httlogo.parent = game.mTex_logo;
-      httlogo.visible = true;
+      const httLogo = loadUI(game.gameUI, "assets/logo.png", 0, 0);
+      httLogo.parent = game.mTex_logo;
+      httLogo.visible = true;
       game.mTex_logo.visible = true;
       game.start = 1;
 
@@ -414,7 +409,7 @@ class Game {
       game.Number.push(loadUI(game.gameUI, "assets/2.png", 0, 0));
       game.Number.push(loadUI(game.gameUI, "assets/1.png", 0, 0));
       game.reload = loadUI(game.gameUI, "assets/reload.png", 0, 0);
-      for (var i = 0; i < game.mTex_fonts.length; i++) {
+      for (let i = 0; i < game.mTex_fonts.length; i++) {
         game.mTex_fonts[i] = createTexts(
           game.gameUI,
           "100",
@@ -470,11 +465,11 @@ class Game {
     mGame.isResize = 5;
   }
   touchEvent(e, type, sys) {
-    var scale =
+    const scale =
       this.gameUI.height /
       this.gameUI.gameCanvas.getBoundingClientRect().height;
-    var CANVAS_HEIGHT = window.innerHeight;
-    var CANVAS_WIDTH = window.innerWidth;
+    const CANVAS_HEIGHT = window.innerHeight;
+    const CANVAS_WIDTH = window.innerWidth;
     if (e.touches != null) {
       if (e.touches.length > 0) {
         this.mouse.x = (e.touches[0].pageX / window.innerWidth) * 2 - 1;
@@ -501,7 +496,7 @@ class Game {
         scale;
       this.coords.y = e.clientY * scale;
 
-      var elem = this.renderer.domElement,
+      const elem = this.renderer.domElement,
         boundingRect = elem.getBoundingClientRect(),
         x =
           (event.clientX - boundingRect.left) *
@@ -513,7 +508,7 @@ class Game {
       this.mouse.y = -(y / CANVAS_HEIGHT) * 2 + 1;
     }
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    var bounds;
+    let bounds;
     if (this.start === undefined) {
       return;
     }
@@ -652,7 +647,7 @@ class Game {
       for (let i = 0; i < this.cylinders.length; i++) {
         if (this.cylinders[i].position.z > 220) {
           this.mixer[i].used = 0;
-          var clyz =
+          const clyz =
             this.cylinders[(i == 0 ? this.cylinders.length : i) - 1].position
               .z - 220;
           if (clyz > this.Gate.position.z) this.cylinders[i].position.z = clyz;
@@ -765,8 +760,6 @@ class Game {
         });
         this.Gate.visible = this.MovingCube.visible = true;
         this.gameCounter = 0;
-        var z = 0;
-        var x = 0;
         for (let i = 0; i < this.cylinders.length; i++) {
           this.cylinders[i].rotation.set(Math.PI * 0.5, 0, 0);
           this.cylinders[i].position.set(0, 0, -220 * i);
