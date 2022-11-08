@@ -1,0 +1,46 @@
+<svg width="123.5" height="84.5" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="86.5" width="125.5" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_2">
+   <ellipse id="svg_3" ry="37.53" rx="60.264" cy="45.468" cx="61.264" fill="#F2F1F0"/>
+   <ellipse id="svg_4" ry="37.529" rx="60.264" cy="39.53" cx="61.264" fill="#FFFFFF"/>
+   <line id="svg_5" y2="34.53" x2="121.528" y1="34.53" x1="1" stroke-miterlimit="10" stroke-width="4" stroke="#008000" fill="none"/>
+   <line id="svg_6" y2="77.034" x2="62.048" y1="2" x1="60.264" stroke-miterlimit="10" stroke-width="4" stroke="#008000" fill="none"/>
+   <ellipse id="svg_7" ry="30.592" rx="49.124" cy="39.245" cx="61.279" fill="#008000"/>
+   <ellipse id="svg_8" ry="24.764" rx="39.765" cy="38.745" cx="61.279" stroke-miterlimit="10" stroke-width="4" stroke="#039303" fill="none"/>
+   <g id="svg_9">
+    <g id="svg_10">
+     <g id="svg_11">
+      <path id="svg_12" d="m44.43,67.989l-5.776,6.336c0,0 9.053,2.014 13.716,2.328l2.513,-7.074l-10.453,-1.59z" fill="#008000"/>
+     </g>
+     <g id="svg_13">
+      <path id="svg_14" d="m69.373,69.028l2,7.625c0,0 9.899,-1.227 14.299,-2.801l-6.799,-6.719l-9.5,1.895z" fill="#008000"/>
+     </g>
+    </g>
+   </g>
+   <path id="svg_15" d="m44.43,11.046l-5.776,-6.334c0,0 9.053,-2.014 13.716,-2.328l2.513,7.072l-10.453,1.59z" fill="#008000"/>
+   <path id="svg_16" d="m69.373,10.008l2,-7.625c0,0 9.899,1.225 14.299,2.799l-6.799,6.719l-9.5,-1.893z" fill="#008000"/>
+   <g id="svg_17">
+    <g id="svg_18">
+     <g id="svg_19">
+      <path id="svg_20" d="m15.088,28.809l-10.683,-1.746c0,0 3.76,-6.327 8.992,-10.338l8.018,5.344l-6.327,6.74z" fill="#008000"/>
+     </g>
+     <path id="svg_21" d="m12.312,41.691l-11.268,-0.742c0,0 0.391,6.478 3.943,12.028l9.714,-3.992l-2.389,-7.294z" fill="#008000"/>
+    </g>
+   </g>
+   <g id="svg_22">
+    <g id="svg_23">
+     <g id="svg_24">
+      <path id="svg_25" d="m107.371,28.809l10.684,-1.746c0,0 -3.761,-6.327 -8.992,-10.338l-8.019,5.344l6.327,6.74z" fill="#008000"/>
+     </g>
+     <path id="svg_26" d="m110.149,41.691l11.266,-0.742c0,0 -0.39,6.478 -3.942,12.028l-9.714,-3.992l2.39,-7.294z" fill="#008000"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

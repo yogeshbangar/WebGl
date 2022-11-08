@@ -1,0 +1,71 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Coin Animation</title>
+<script src="./pixi/pixi.min.js"></script>
+<style>
+  body {
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+  }
+
+  #turn {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: none;
+    z-index: 2;
+  }
+
+  .parent {
+    display: grid;
+    place-items: center center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    background: gainsboro;
+  }
+
+  .child {
+    background: white;
+  }
+
+  @font-face {
+    font-family: "fontcomic";
+    src: url("assets/fontcomic.otf");
+  }
+</style>
+
+<body>
+  <div class="parent">
+    <div id="anim" class="child"></div>
+  </div>
+  <script src="./js/reqVeriables.js"></script>
+  <script src="./js/dynmicRect.js"></script>
+  <script src="./js/coinanim.js"></script>
+  <script src="./js/RolleteSpend.js"></script>
+  <script src="./js/roulette.js"></script>
+  <script src="./js/anim.js"></script>
+  <script src="./js/polygoncirclecollition.js"></script>
+  <script src="./js/chip.js"></script>
+  <script src="./js/menu.js"></script>
+  <script src="./js/Home.js"></script>
+  <script src="./js/Basic.js"></script>
+  <script src="./js/DreamCatcher.js"></script>
+  <script src="./js/DragonTiger.js"></script>
+  <script src="./js/SpeedBaccarat.js"></script>
+  <script src="./js/Sicbo.js"></script>
+  <script src="./js/PokerHelp.js"></script>
+  <script src="./js/Roulette_help.js"></script>
+  <script src="./js/DreamCatcherHelp.js"></script>
+  <script src="./js/DragonTigerHelp.js"></script>
+  <script src="./js/SpeedBaccaratHelp.js"></script>
+  <script src="./js/SicBoHelp.js"></script>
+</body>
